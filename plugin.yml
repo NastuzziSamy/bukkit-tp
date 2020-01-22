@@ -1,0 +1,49 @@
+name: TP
+main: fr.geometrum.minecraft.tp
+author: Geometrum
+version: 1.0.0
+commands:
+   tpto:
+      description: Asks the player if you can tp to
+      usage: /<command> <PlayerName>
+      permission: tp.tpto
+      aliases: tpt
+   tphere:
+      description: Asks the player to come to you
+      uasge: /<command> <PlayerName>
+      permission: tp.tphere
+      aliases: tph
+   tpaccept:
+      description: Accepts the teleport request
+      uasge: /<command>
+      permission: tp.tpaccept
+      aliases: tpa
+   tpdeny:
+      description: Denies the teleport request
+      usage: /<command>
+      permission: tp.tpdeny
+      aliases: tpd
+permissions:
+   tp.*:
+      description: Gives access to all TP commands.
+      default: op
+      children:
+         tp.tpto: true
+         tp.tphere: true
+         tp.tpaccept: true
+         tp.tpdeny: true
+   tp.tpto:
+      description: Allows you to ask a player if you can tp to.
+      default: false
+   tp.tphere:
+      description: Allows you to ask a plyer to come to you.
+      default: false
+   tp.tpaccept:
+      description: Allows you to accept teleport request from other players.
+      default: false
+   tp.tpdeny:
+      description: Allows you to deny teleport request from other players.
+      default: false
+   
+
+      
