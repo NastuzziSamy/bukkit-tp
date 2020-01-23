@@ -1,5 +1,5 @@
 name: TP
-main: fr.geometrum.minecraft.tp
+main: fr.geometrum.minecraft.tp.Main
 author: Geometrum
 version: 1.0.0
 commands:
