@@ -67,8 +67,16 @@ public class Chat {
         );
     }
 
+    public static void askTpHere(Player player, Player target) {
+        Chat.sendPending(player, "Teleportation request sent to " + target.getDisplayName() + ".");
+        Chat.sendPending(target,
+            player.getDisplayName() + " has requested to teleport you to its position.\n" + "To accept, type " + ChatColor.GREEN
+            + "/tpaccept" + ChatColor.GOLD + ".\n" + "To deny this request, type " + ChatColor.RED
+            + "/tpdeny" + ChatColor.GOLD + ".");
+    }
+
     public static void cancelAskTp(Player player, Player target) {
-        Chat.sendError(player, "Teleportation request canceled.");
-        Chat.sendError(target, player.getDisplayName() + " has canceled its teleportation request.");
+        Chat.sendError(player, "Teleportation request was canceled.");
+        Chat.sendError(target, player.getDisplayName() + "'s teleportation request has been canceled.");
     }
 }

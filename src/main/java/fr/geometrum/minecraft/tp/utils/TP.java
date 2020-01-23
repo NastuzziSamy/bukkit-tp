@@ -4,9 +4,12 @@ import org.bukkit.entity.Player;
 
 
 public class TP {
+    final public static boolean HERE = true;
+    final public static boolean NOT_HERE = true;
+
     protected Player sender;
     protected Player receiver;
-    protected boolean tpHere = false;
+    protected boolean tpHere = TP.NOT_HERE;
 
     public TP(Player sender, Player receiver, boolean tpHere) {
         TP.this.sender = sender;

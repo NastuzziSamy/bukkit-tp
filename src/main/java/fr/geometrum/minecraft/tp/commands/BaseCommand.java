@@ -30,13 +30,13 @@ abstract public class BaseCommand implements CommandExecutor, Listener {
         if (args.length < BaseCommand.this.getMinArgs()) {
             Chat.tooFewArgs((Player) sender);
 
-            return false;
+            return true;
         }
 
         if (args.length > BaseCommand.this.getMaxArgs()) {
             Chat.tooManyArgs((Player) sender);
 
-            return false;
+            return true;
         }
 
         return BaseCommand.this.onCommand((Player) sender, command, label, args);
