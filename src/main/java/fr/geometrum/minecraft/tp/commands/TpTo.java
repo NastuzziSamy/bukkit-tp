@@ -13,7 +13,7 @@ public class TpTo extends BaseCommand {
     }
 
     public String getCommandName() {
-        return "tpto";
+        return BaseCommand.TP_TO;
     }
 
     protected int getMinArgs() {
@@ -41,6 +41,12 @@ public class TpTo extends BaseCommand {
 
         if (target.getWorld() != player.getWorld()) {
             Chat.needSameWorld(player, target);
+
+            return true;
+        }
+
+        if (!TpTo.this.hasPermission(target, BaseCommand.TP_ACCEPT) || !TpTo.this.hasPermission(target, BaseCommand.TP_DENY)) {
+            Chat.requirePermission(player, target);
 
             return true;
         }

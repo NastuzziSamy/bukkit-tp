@@ -19,7 +19,7 @@ public class Chat {
     }
 
     public static void sendFail(CommandSender sender, String msg) {
-        sender.sendMessage(ChatColor.RED + msg);
+        sender.sendMessage(ChatColor.DARK_RED + msg);
     }
 
     public static void requirePlayer(CommandSender sender) {
@@ -28,6 +28,10 @@ public class Chat {
 
     public static void requirePermission(Player player) {
         Chat.sendFail(player, "You dont have permission to do that!");
+    }
+
+    public static void requirePermission(Player player, Player target) {
+        Chat.sendFail(player, target.getDisplayName() + " dont have permissions for teleportation!");
     }
 
     public static void tooManyArgs(Player player) {
@@ -51,10 +55,9 @@ public class Chat {
     }
 
     public static void askTpTo(Player player, Player target) {
-        Chat.sendPending(player, "Teleportation request sent to " + ChatColor.WHITE + target.getDisplayName() + ChatColor.GOLD + ".");
+        Chat.sendPending(player, "Teleportation request sent to " target.getDisplayName() + ".");
         Chat.sendPending(target, 
-            ChatColor.WHITE + player.getDisplayName() + 
-            ChatColor.GOLD + " has requested to teleport to you.\n" +
+            player.getDisplayName() + " has requested to teleport to you.\n" +
             "To accept, type " + ChatColor.GREEN + "/tpaccept" + ChatColor.GOLD + ".\n" + 
             "To deny this request, type " + ChatColor.RED + "/tpdeny" + ChatColor.GOLD + "."
         );

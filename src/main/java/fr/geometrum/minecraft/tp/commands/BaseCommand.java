@@ -13,6 +13,12 @@ import fr.geometrum.minecraft.tp.utils.Chat;
 
 abstract public class BaseCommand implements CommandExecutor, Listener {
     protected Main plugin;
+    final public static String BASE_PERM = "tp.";
+    final public static String TP_TO = "tpto";
+    final public static String TP_HERE = "tphere";
+    final public static String TP_CANCEL = "tpcancel";
+    final public static String TP_ACCEPT = "tpaccept";
+    final public static String TP_DENY = "tpdeny";
 
     abstract public String getCommandName();
 
@@ -40,6 +46,10 @@ abstract public class BaseCommand implements CommandExecutor, Listener {
 
     protected Player findPlayer(String playerName) {
         return Bukkit.getServer().getPlayer(playerName);
+    }
+
+    protected boolean hasPermission(Player player, String permissionName) {
+        return player.hasPermission(BASE_PERM + permissionName);
     }
 
     protected TPManager getTPManager() {
