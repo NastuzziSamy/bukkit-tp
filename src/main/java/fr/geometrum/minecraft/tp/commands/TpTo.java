@@ -1,21 +1,54 @@
 package fr.geometrum.minecraft.tp.commands;
 
+import org.bukkit.entity.Player;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import fr.geometrum.minecraft.tp.Main;
+import fr.geometrum.minecraft.tp.utils.TP;
+import fr.geometrum.minecraft.tp.utils.Chat;
 
 
 public class TpTo extends BaseCommand {
-    public static String command = "tpto";
-
-    private final Main plugin;
-
     public TpTo(Main plugin) {
-        this.plugin = plugin;
+        TpTo.this.plugin = plugin;
     }
 
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        TpTo.this.plugin.getLogger().info("CoucouTpTo");
+    public String getCommandName() {
+        return "tpto";
+    }
+
+    protected int getMinArgs() {
+        return 1;
+    }
+
+    protected int getMaxArgs() {
+        return 1;
+    }
+
+    public boolean onCommand(Player player, Command cmd, String label, String[] args) {
+        if (TpTo.this.getTPManager().hasFromSender(player)) {
+            Chat.tpAlreadyRequested(player);
+
+            return true;
+        }
+
+        Player target = TpTo.this.findPlayer(args[0]);
+
+        if (target == player) {
+            Chat.needDifferentPlayer(player);
+
+            return true;
+        }
+
+        if (target.getWorld() != player.getWorld()) {
+            Chat.needSameWorld(player, target);
+
+            return true;
+        }
+
+        TpTo.this.getTPManager().addTp(new TP(player, player));
+    
+        Chat.askTpTo(player, target);
+
         return true;
     }
 }

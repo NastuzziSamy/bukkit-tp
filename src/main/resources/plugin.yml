@@ -13,6 +13,11 @@ commands:
       uasge: /<command> <PlayerName>
       permission: tp.tphere
       aliases: tph
+   tpcancel:
+      description: Cancel the last teleport request
+      usage: /<command>
+      permission: tp.cancel
+      aliases: tpc
    tpaccept:
       description: Accepts the teleport request
       uasge: /<command>
@@ -30,6 +35,7 @@ permissions:
       children:
          tp.tpto: true
          tp.tphere: true
+         tp.tpcancel: true
          tp.tpaccept: true
          tp.tpdeny: true
    tp.tpto:
@@ -37,6 +43,9 @@ permissions:
       default: false
    tp.tphere:
       description: Allows you to ask a plyer to come to you.
+      default: false
+   tp.tpcancel:
+      description: Allows you to cancel a teleport request.
       default: false
    tp.tpaccept:
       description: Allows you to accept teleport request from other players.
