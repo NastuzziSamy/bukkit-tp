@@ -46,6 +46,10 @@ public class Chat {
         Chat.sendError(player, "You have already sent a tp request!");
     }
 
+    public static void tpNeverRequested(Player player) {
+        Chat.sendError(player, "You have sent no tp requests!");
+    }
+
     public static void needDifferentPlayer(Player player) {
         Chat.sendError(player, "You cannot tp to yourself!");
     }
@@ -55,11 +59,16 @@ public class Chat {
     }
 
     public static void askTpTo(Player player, Player target) {
-        Chat.sendPending(player, "Teleportation request sent to " target.getDisplayName() + ".");
+        Chat.sendPending(player, "Teleportation request sent to " + target.getDisplayName() + ".");
         Chat.sendPending(target, 
             player.getDisplayName() + " has requested to teleport to you.\n" +
             "To accept, type " + ChatColor.GREEN + "/tpaccept" + ChatColor.GOLD + ".\n" + 
             "To deny this request, type " + ChatColor.RED + "/tpdeny" + ChatColor.GOLD + "."
         );
+    }
+
+    public static void cancelAskTp(Player player, Player target) {
+        Chat.sendError(player, "Teleportation request canceled.");
+        Chat.sendError(target, player.getDisplayName() + " has canceled its teleportation request.");
     }
 }

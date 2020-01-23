@@ -11,7 +11,7 @@ public class TPManager {
         TPManager.this.tps = new ArrayList<TP>();
     }
 
-    public TP getFromSender(Player player) {
+    public TP get(Player player) {
         for (TP tp: TPManager.this.tps) {
             if (tp.getSender() == player) {
                 return tp;
@@ -21,8 +21,8 @@ public class TPManager {
         return null;
     }
 
-    public boolean hasFromSender(Player player) {
-        for (TP tp: TPManager.this.tps) {
+    public boolean has(Player player) {
+        for (TP tp : TPManager.this.tps) {
             if (tp.getSender() == player) {
                 return true;
             }
@@ -31,8 +31,29 @@ public class TPManager {
         return false;
     }
 
+    public void remove(TP tp) {
+        TPManager.this.tps.remove(tp);
+    }
+
+    public void remove(Player player) {
+        for (TP tp : TPManager.this.tps) {
+            if (tp.getSender() == player) {
+                TPManager.this.remove(tp);
+
+                break;
+            }
+        }
+    }
+
     public void clean() {
-        // Indicate that all was canceled.
+        TP tp;
+
+        while (TPManager.this.tps.size() > 0) {
+            tp = TPManager.this.tps.get(0);
+            
+            tp.cancel();
+            TPManager.this.remove(tp);
+        }
     }
 
     public void addTp(TP tp) {

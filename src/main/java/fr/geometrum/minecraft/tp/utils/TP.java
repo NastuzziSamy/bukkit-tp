@@ -1,6 +1,5 @@
 package fr.geometrum.minecraft.tp.utils;
 
-import java.util.ArrayList;
 import org.bukkit.entity.Player;
 
 
@@ -28,9 +27,7 @@ public class TP {
         return TP.this.receiver;
     }
 
-    public void checkTp() {
-    }
-
-    public void tp() {
+    public void cancel() {
+        Chat.cancelAskTp(TP.this.sender, TP.this.receiver);
     }
 }

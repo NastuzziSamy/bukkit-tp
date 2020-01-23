@@ -25,7 +25,7 @@ public class TpTo extends BaseCommand {
     }
 
     public boolean onCommand(Player player, Command cmd, String label, String[] args) {
-        if (TpTo.this.getTPManager().hasFromSender(player)) {
+        if (TpTo.this.getTPManager().has(player)) {
             Chat.tpAlreadyRequested(player);
 
             return true;
@@ -51,7 +51,7 @@ public class TpTo extends BaseCommand {
             return true;
         }
 
-        TpTo.this.getTPManager().addTp(new TP(player, player));
+        TpTo.this.getTPManager().addTp(new TP(player, target));
     
         Chat.askTpTo(player, target);
 
