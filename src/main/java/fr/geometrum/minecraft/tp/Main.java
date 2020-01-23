@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.geometrum.minecraft.tp.commands.BaseCommand;
+import fr.geometrum.minecraft.tp.commands.TpAccept;
 import fr.geometrum.minecraft.tp.commands.TpCancel;
 import fr.geometrum.minecraft.tp.commands.TpDeny;
 import fr.geometrum.minecraft.tp.commands.TpHere;
@@ -40,6 +41,7 @@ public class Main extends JavaPlugin {
       Main.this.commands.add(new TpHere(this));
       Main.this.commands.add(new TpCancel(this));
       Main.this.commands.add(new TpDeny(this));
+      Main.this.commands.add(new TpAccept(this));
    }
 
    protected void initData() {

@@ -14,6 +14,10 @@ public class Chat {
         sender.sendMessage(ChatColor.WHITE + msg);
     }
 
+    public static void sendSilent(CommandSender sender, String msg) {
+        sender.sendMessage(ChatColor.ITALIC + "" + ChatColor.GRAY + msg);
+    }
+
     public static void sendError(CommandSender sender, String msg) {
         sender.sendMessage(ChatColor.RED + msg);
     }
@@ -95,5 +99,15 @@ public class Chat {
     public static void denyAskTp(Player sender, Player receiver) {
         Chat.sendError(sender, "Teleportation request was denied.");
         Chat.sendError(receiver, sender.getDisplayName() + "'s teleportation request has been denied.");
+    }
+
+    public static void tp(Player sender, Player receiver) {
+        Chat.sendSilent(sender, "Teleporting to " + receiver.getDisplayName() + ".");
+        Chat.sendSilent(receiver, "Teleporting " + sender.getDisplayName() + " to you.");
+    }
+
+    public static void tpHere(Player sender, Player receiver) {
+        Chat.sendSilent(sender, "Teleporting " + receiver.getDisplayName() + " to you.");
+        Chat.sendSilent(receiver, "Teleporting to " + sender.getDisplayName() + ".");
     }
 }

@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 
 public class TP {
     final public static boolean HERE = true;
-    final public static boolean NOT_HERE = true;
+    final public static boolean NOT_HERE = false;
 
     protected Player sender;
     protected Player receiver;
@@ -41,5 +41,19 @@ public class TP {
 
     public void deny() {
         Chat.denyAskTp(TP.this.sender, TP.this.receiver);
+    }
+
+    public void accept() {
+        if (TP.this.tpHere) {
+            Chat.tpHere(TP.this.sender, TP.this.receiver);
+            TP.this.tp(TP.this.sender, TP.this.receiver);
+        } else {
+            Chat.tp(TP.this.sender, TP.this.receiver);
+            TP.this.tp(TP.this.receiver, TP.this.sender);
+        }
+    }
+
+    public void tp(Player player, Player playerToTeleport) {
+        playerToTeleport.teleport(player);
     }
 }
