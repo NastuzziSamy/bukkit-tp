@@ -45,12 +45,32 @@ public class TPManager {
         }
     }
 
+    public TP getReceiver(Player player) {
+        for (TP tp : TPManager.this.tps) {
+            if (tp.getReceiver() == player) {
+                return tp;
+            }
+        }
+
+        return null;
+    }
+
+    public boolean hasReceiver(Player player) {
+        for (TP tp : TPManager.this.tps) {
+            if (tp.getReceiver() == player) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void clean() {
         TP tp;
 
         while (TPManager.this.tps.size() > 0) {
             tp = TPManager.this.tps.get(0);
-            
+
             tp.cancel();
             TPManager.this.remove(tp);
         }

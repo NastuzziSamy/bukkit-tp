@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.geometrum.minecraft.tp.commands.BaseCommand;
 import fr.geometrum.minecraft.tp.commands.TpCancel;
+import fr.geometrum.minecraft.tp.commands.TpDeny;
 import fr.geometrum.minecraft.tp.commands.TpHere;
 import fr.geometrum.minecraft.tp.commands.TpTo;
 import fr.geometrum.minecraft.tp.utils.Chat;
@@ -38,6 +39,7 @@ public class Main extends JavaPlugin {
       Main.this.commands.add(new TpTo(this));
       Main.this.commands.add(new TpHere(this));
       Main.this.commands.add(new TpCancel(this));
+      Main.this.commands.add(new TpDeny(this));
    }
 
    protected void initData() {

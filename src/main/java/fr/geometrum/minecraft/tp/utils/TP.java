@@ -15,11 +15,16 @@ public class TP {
         TP.this.sender = sender;
         TP.this.receiver = receiver;
         TP.this.tpHere = tpHere;
+
+        if (TP.this.tpHere) {
+            Chat.askTpHere(TP.this.sender, TP.this.receiver);
+        } else {
+            Chat.askTpTo(TP.this.sender, TP.this.receiver);
+        }
     }
 
     public TP(Player sender, Player receiver) {
-        TP.this.sender = sender;
-        TP.this.receiver = receiver;
+        this(sender, receiver, TP.NOT_HERE);
     }
 
     public Player getSender() {
@@ -32,5 +37,9 @@ public class TP {
 
     public void cancel() {
         Chat.cancelAskTp(TP.this.sender, TP.this.receiver);
+    }
+
+    public void deny() {
+        Chat.denyAskTp(TP.this.sender, TP.this.receiver);
     }
 }

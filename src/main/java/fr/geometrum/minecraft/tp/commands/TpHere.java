@@ -33,6 +33,12 @@ public class TpHere extends BaseCommand {
 
         Player target = TpHere.this.findPlayer(args[0]);
 
+        if (target == null) {
+            Chat.playerNotFound(player, args[0]);
+
+            return true;
+        }
+
         if (target == player) {
             Chat.needDifferentPlayer(player);
 
@@ -52,8 +58,6 @@ public class TpHere extends BaseCommand {
         }
 
         TpHere.this.getTPManager().addTp(new TP(player, target, TP.HERE));
-    
-        Chat.askTpHere(player, target);
 
         return true;
     }

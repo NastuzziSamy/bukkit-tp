@@ -20,12 +20,12 @@ commands:
       aliases: tpc
    tpaccept:
       description: Accepts the teleport request
-      uasge: /<command>
+      uasge: /<command> [<PlayerName>]
       permission: tp.tpaccept
       aliases: tpa
    tpdeny:
       description: Denies the teleport request
-      usage: /<command>
+      usage: /<command> [<PlayerName>]
       permission: tp.tpdeny
       aliases: tpd
 permissions:

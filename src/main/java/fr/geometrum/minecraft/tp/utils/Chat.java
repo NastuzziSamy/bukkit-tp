@@ -34,6 +34,10 @@ public class Chat {
         Chat.sendFail(player, target.getDisplayName() + " dont have permissions for teleportation!");
     }
 
+    public static void playerNotFound(Player player, String playerName) {
+        Chat.sendError(player, "Player " + playerName + " not found!");
+    }
+
     public static void tooManyArgs(Player player) {
         Chat.sendError(player, "Too many arguments!");
     }
@@ -48,6 +52,14 @@ public class Chat {
 
     public static void tpNeverRequested(Player player) {
         Chat.sendError(player, "You have sent no tp requests!");
+    }
+
+    public static void tpNeverReceived(Player player) {
+        Chat.sendError(player, "You have received no tp requests!");
+    }
+
+    public static void tpNeverReceivedFrom(Player player, Player sender) {
+        Chat.sendError(player, "You have received no tp requests from " + sender.getDisplayName() + "!");
     }
 
     public static void needDifferentPlayer(Player player) {
@@ -78,5 +90,10 @@ public class Chat {
     public static void cancelAskTp(Player player, Player target) {
         Chat.sendError(player, "Teleportation request was canceled.");
         Chat.sendError(target, player.getDisplayName() + "'s teleportation request has been canceled.");
+    }
+
+    public static void denyAskTp(Player sender, Player receiver) {
+        Chat.sendError(sender, "Teleportation request was denied.");
+        Chat.sendError(receiver, sender.getDisplayName() + "'s teleportation request has been denied.");
     }
 }

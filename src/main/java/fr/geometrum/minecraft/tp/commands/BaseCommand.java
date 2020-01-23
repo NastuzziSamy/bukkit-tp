@@ -45,7 +45,7 @@ abstract public class BaseCommand implements CommandExecutor, Listener {
     abstract public boolean onCommand(Player player, Command command, String label, String[] args);
 
     protected Player findPlayer(String playerName) {
-        return Bukkit.getServer().getPlayer(playerName);
+        return Bukkit.getServer().getPlayerExact(playerName);
     }
 
     protected boolean hasPermission(Player player, String permissionName) {

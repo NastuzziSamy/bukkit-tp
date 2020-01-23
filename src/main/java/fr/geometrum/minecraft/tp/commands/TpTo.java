@@ -33,6 +33,12 @@ public class TpTo extends BaseCommand {
 
         Player target = TpTo.this.findPlayer(args[0]);
 
+        if (target == null) {
+            Chat.playerNotFound(player, args[0]);
+
+            return true;
+        }
+
         if (target == player) {
             Chat.needDifferentPlayer(player);
 
@@ -52,8 +58,6 @@ public class TpTo extends BaseCommand {
         }
 
         TpTo.this.getTPManager().addTp(new TP(player, target));
-    
-        Chat.askTpTo(player, target);
 
         return true;
     }
